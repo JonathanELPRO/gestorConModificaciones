@@ -5,7 +5,7 @@ from Modelo.G_catalogo.Catalogo import Catalogo
 from Modelo.G_inventario.Producto import Producto, Aretes
 
 
-class TestTablaCatalogo(unittest.TestCase):
+class TestGestorCatalogo(unittest.TestCase):
     def setUp(self):
         self.gestor = GestorCatalogo()
 
