@@ -16,6 +16,11 @@ class TestGestorCarrito(unittest.TestCase):
         self.gestor.tabla_carritos = self.mockTabla
         self.gestor.carrito = self.mockCarrito
 
+    def tearDown(self):
+        self.mockTabla=None
+        self.mockCarrito=None
+        self.gestor=None
+
     def test_guardar_carrito(self):
         self.gestor.guardar_carrito()
         self.mockTabla.guardar_carrito.assert_called_with(self.mockCarrito)
@@ -56,10 +61,21 @@ class TestGestorCarrito(unittest.TestCase):
 
             self.assertTrue(resultado)
 
+    # def test_eliminar_producto_con_carrito(self):
+    #     self.mockCarrito.eliminar_producto.return_value = None
+    #     resultado = self.gestor.eliminar_producto("modeloABC")
+    #     self.assertTrue(resultado)
+
     def test_eliminar_producto_con_carrito(self):
+        # Simula que el carrito tiene productos
+        producto = Piercings("Piercing de plata", "321BCD", "MarcaQ", 1, "Plata", "Plateado", "Zirconia", 35)
+        self.mockCarrito.productos = [producto]
         self.mockCarrito.eliminar_producto.return_value = None
+
         resultado = self.gestor.eliminar_producto("modeloABC")
+
         self.assertTrue(resultado)
+        self.mockCarrito.eliminar_producto.assert_called_with("modeloABC")
 
     def test_eliminar_producto_sin_carrito(self):
         self.gestor.carrito = None
