@@ -41,19 +41,6 @@ class TestGestorCarrito(unittest.TestCase):
 
             self.assertFalse(resultado)
 
-    def test_agregar_producto_producto_encontrado(self):
-        with patch("Modelo.G_carrito.GestorCarrito.Inventario") as mockInventarioClase:
-            producto = Piercings("Piercing de plata", "321BCD", "MarcaQ", 1, "Plata", "Plateado", "Zirconia", 35)
-
-            mockInventario = MagicMock(spec=Inventario)
-
-            mockInventario.obtener_producto.return_value = producto
-
-            mockInventarioClase.return_value = mockInventario
-
-            resultado = self.gestor.agregar_producto("Piercing de plata", 1)
-
-            self.assertTrue(resultado)
 
     def test_agregar_producto_producto_encontrado(self):
         with patch("Modelo.G_carrito.GestorCarrito.Inventario") as mockInventarioClase:
