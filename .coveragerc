@@ -1,5 +1,5 @@
 [run]
 source = Modelo
 omit =
-    Modelo/G*/__init__.py
+
 
