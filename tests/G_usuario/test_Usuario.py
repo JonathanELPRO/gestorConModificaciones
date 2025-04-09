@@ -11,7 +11,8 @@ class TestUsuario(unittest.TestCase):
             id_usuario=1
         )
 
-
+    def tearDown(self):
+        self.usuario = None
 
 
 
@@ -36,9 +37,6 @@ class TestUsuario(unittest.TestCase):
     def test_set_contrasena(self):
         self.usuario.set_contrasena("nueva_contrasena")
         self.assertEqual(self.usuario.get_contrasena(), "nueva_contrasena")
-
-    def tearDown(self):
-        self.usuario = None
 
     def test_get_id(self):
         self.assertEqual(self.usuario.get_id(), 1)
