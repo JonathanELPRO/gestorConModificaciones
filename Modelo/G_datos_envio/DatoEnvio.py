@@ -11,19 +11,19 @@ class DatoEnvio:
     '''
 
     def get_nombre(self):
-        return self._nombre
+        return self.nombre
 
     def get_direccion(self):
-        return self._direccion
+        return self.direccion
 
     def get_ciudad(self):
-        return self._ciudad
+        return self.ciudad
 
     def get_codigo_postal(self):
-        return self._codigo_postal
+        return self.codigo_postal
 
     def get_pais(self):
-        return self._pais
+        return self.pais
 
     def set_nombre(self, valor):
         if not valor:
