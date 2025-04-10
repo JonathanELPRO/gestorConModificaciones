@@ -47,7 +47,6 @@ class TestGestorPago(unittest.TestCase):
         self.assertFalse(result)
         mock_agregar.assert_not_called()
 
-    # ---------- Prueba de solicitud_obtener_tarjetas_bancarias ----------
     @patch("Modelo.G_pago.TablaPago.TablaPago.obtener_tarjetas")
     def test_obtener_tarjetas(self, mock_obtener):
         mock_obtener.return_value = ["tarjeta1", "tarjeta2"]
@@ -55,7 +54,6 @@ class TestGestorPago(unittest.TestCase):
         self.assertEqual(result, ["tarjeta1", "tarjeta2"])
         mock_obtener.assert_called_once()
 
-    # ---------- Prueba de recibir_datos_bancarios_modificar ----------
     @patch("Modelo.G_pago.TablaPago.TablaPago.modificar_tarjeta")
     def test_modificar_tarjeta(self, mock_modificar):
         mock_modificar.return_value = True
@@ -63,7 +61,6 @@ class TestGestorPago(unittest.TestCase):
         self.assertTrue(result)
         mock_modificar.assert_called_once_with(0, "numero", "9876543210123456")
 
-    # ---------- Prueba de recibir_datos_bancarios_eliminar ----------
     @patch("Modelo.G_pago.TablaPago.TablaPago.eliminar_tarjeta")
     def test_eliminar_tarjeta(self, mock_eliminar):
         mock_eliminar.return_value = True

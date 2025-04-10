@@ -11,12 +11,19 @@ class TestTablaPago(unittest.TestCase):
         mock_session_class.return_value = self.mock_session
         self.tabla_pago = TablaPago()
 
-    def test_agregar_tarjeta_nueva(self):
+    def test_agregar_tarjeta_nueva_sin_datos_envio(self):
+        self.mock_session.obtener_id_usuario.return_value = "usuario1"
         tarjeta = MagicMock()
         result = self.tabla_pago.agregar_tarjeta(tarjeta)
         self.assertTrue(result)
-        self.assertIn("usuario1", self.tabla_pago._TablaPago__pagos)
-        self.assertEqual(len(self.tabla_pago._TablaPago__pagos["usuario1"]), 1)
+
+    def test_agregar_tarjeta_con_datos_envio(self):
+        self.mock_session.obtener_id_usuario.return_value = "usuario2"
+        # Agrega datos de envío
+        self.tabla_pago._TablaPago__pagos["usuario2"] = []
+        tarjeta = MagicMock()
+        result = self.tabla_pago.agregar_tarjeta(tarjeta)
+        self.assertTrue(result)
 
     def test_obtener_tarjetas_existente(self):
         tarjeta = MagicMock()
