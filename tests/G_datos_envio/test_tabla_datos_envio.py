@@ -76,12 +76,6 @@ class TestTablaDatosEnvio(unittest.TestCase):
     def test_tiene_datos_envio_false(self):
         self.assertFalse(self.tabla.tiene_datos_envio())
 
-    def test_modificar_dato_direccion(self):
-        dato = FakeDatoEnvio(direccion="Av. Siempre Viva")
-        self.tabla.agregar_dato_envio(dato)
-
-        self.tabla.modificar_dato("direccion", "Av. Nueva", 0)
-        self.assertEqual(self.tabla.tabla_datos_envio[1][0].direccion, "Av. Nueva")
 
     def test_modificar_dato_ciudad(self):
         dato = FakeDatoEnvio(ciudad="La Paz")
@@ -103,6 +97,37 @@ class TestTablaDatosEnvio(unittest.TestCase):
 
         self.tabla.modificar_dato("pais", "Argentina", 0)
         self.assertEqual(self.tabla.tabla_datos_envio[1][0].pais, "Argentina")
+
+    def test_modificar_dato_tipo_invalido(self):
+        dato = FakeDatoEnvio(
+            nombre="Original",
+            direccion="Dirección Original",
+            ciudad="Ciudad Original",
+            codigo_postal="1234",
+            pais="País Original"
+        )
+        self.tabla.agregar_dato_envio(dato)
+
+        # Intentamos modificar con un tipo inválido
+        resultado = self.tabla.modificar_dato("tipo_invalido", "Valor", 0)
+
+        # Verificamos que devuelva True (siempre devuelve True según la implementación)
+        self.assertTrue(resultado)
+
+        # Verificamos que ningún campo haya cambiado
+        self.assertEqual(self.tabla.tabla_datos_envio[1][0].nombre, "Original")
+        self.assertEqual(self.tabla.tabla_datos_envio[1][0].direccion, "Dirección Original")
+        self.assertEqual(self.tabla.tabla_datos_envio[1][0].ciudad, "Ciudad Original")
+        self.assertEqual(self.tabla.tabla_datos_envio[1][0].codigo_postal, "1234")
+        self.assertEqual(self.tabla.tabla_datos_envio[1][0].pais, "País Original")
+
+
+    def test_modificar_dato_direccion(self):
+        dato = FakeDatoEnvio(direccion="Av. Siempre Viva")
+        self.tabla.agregar_dato_envio(dato)
+
+        self.tabla.modificar_dato("direccion", "Av. Nueva", 0)
+        self.assertEqual(self.tabla.tabla_datos_envio[1][0].direccion, "Av. Nueva")
 
 
 if __name__ == '__main__':

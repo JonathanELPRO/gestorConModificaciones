@@ -26,7 +26,6 @@ class GestorDatosEnvio:
         return False
 
     def obtener_datos_envio(self):
-
         return self.tabla_datos_envio.obtener_datos_envio()
 
     def recibir_modificacion(self, tipo_dato, dato, indice):
@@ -34,8 +33,3 @@ class GestorDatosEnvio:
 
     def recibir_eliminar_dato(self, indice):
         return self.tabla_datos_envio.eliminar_dato(indice)
-
-
-
-
-
