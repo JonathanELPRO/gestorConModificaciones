@@ -85,3 +85,7 @@ class TestTablaPago(unittest.TestCase):
     def test_tiene_datos_pago_false(self):
         self.mock_session.obtener_id_usuario.return_value = "nuevo_usuario"
         self.assertFalse(self.tabla_pago.tiene_datos_pago())
+
+    def tearDown(self):
+        self.mock_session = None  # Liberar la referencia al mock de la sesión
+        self.tabla_pago = None  # Liberar la referencia al objeto TablaPago

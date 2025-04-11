@@ -25,3 +25,6 @@ class TestTarjetaBancaria(unittest.TestCase):
     def test_set_cvv(self):
         self.tarjeta.set_cvv("999")
         self.assertEqual(self.tarjeta.get_cvv(), "999")
+
+    def tearDown(self):
+        self.tarjeta = None  # Liberar la referencia al objeto TarjetaBancaria

@@ -68,5 +68,8 @@ class TestGestorPago(unittest.TestCase):
         self.assertTrue(result)
         mock_eliminar.assert_called_once_with(0)
 
+    def tearDown(self):
+        self.gestor = None  # Liberar la referencia al objeto GestorPago
+
 if __name__ == "__main__":
     unittest.main()

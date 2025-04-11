@@ -65,6 +65,10 @@ class TestGestorDatosEnvio(unittest.TestCase):
         self.assertTrue(resultado)
         self.gestor.tabla_datos_envio.eliminar_dato.assert_called_once_with(0)
 
+    def tearDown(self):
+        self.gestor = None  # Liberar la referencia al objeto GestorDatosEnvio
+
+
 
 if __name__ == '__main__':
     unittest.main()

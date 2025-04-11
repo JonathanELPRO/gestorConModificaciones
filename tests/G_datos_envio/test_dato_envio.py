@@ -91,5 +91,8 @@ class TestDatoEnvio(unittest.TestCase):
         )
         self.assertEqual(str(self.dato_envio), expected_str)
 
+    def tearDown(self):
+        self.dato_envio = None  # Liberar la referencia al objeto DatoEnvio
+
 if __name__ == '__main__':
     unittest.main()

@@ -129,6 +129,10 @@ class TestTablaDatosEnvio(unittest.TestCase):
         self.tabla.modificar_dato("direccion", "Av. Nueva", 0)
         self.assertEqual(self.tabla.tabla_datos_envio[1][0].direccion, "Av. Nueva")
 
+    def tearDown(self):
+        self.mock_session = None  # Liberar la referencia al mock de la sesión
+        self.tabla = None  # Liberar la referencia al objeto TablaDatosEnvio
+
 
 if __name__ == '__main__':
     unittest.main()
