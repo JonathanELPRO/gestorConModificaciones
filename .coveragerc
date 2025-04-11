@@ -1,5 +1,5 @@
 [run]
-source = Modelo/G_pago
+source = Modelo
 omit =
 
 
