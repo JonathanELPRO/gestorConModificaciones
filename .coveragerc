@@ -1,4 +1,5 @@
 [run]
 source = Modelo
 omit =
+    __init__.py
 
